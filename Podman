@@ -1,0 +1,30 @@
+# Pendahuluan ke Podman
+
+## Apa itu Podman?
+Podman adalah sebuah engine container open-source yang tidak memerlukan daemon untuk menjalankan dan mengelola container dan pod yang sesuai 
+dengan standar OCI (Open Container Initiative). Dikembangkan oleh Red Hat, Podman hadir sebagai alternatif modern dari Docker, 
+dengan beberapa perbedaan utama, terutama dalam cara pengelolaan container tanpa memerlukan daemon yang berjalan.
+
+## Fitur Utama Podman
+- **Arsitektur Tanpa Daemon:** Tidak seperti Docker, Podman tidak membutuhkan daemon pusat untuk mengelola container. 
+Ketiadaan daemon ini meningkatkan keamanan karena tidak ada satu titik kegagalan dan mengurangi beban sistem.
+- **Container Tanpa Root:** Podman memungkinkan pengguna menjalankan container tanpa memerlukan hak akses root. 
+Fitur ini mengurangi risiko keamanan karena container bisa dijalankan dalam lingkungan dengan hak akses yang lebih rendah.
+- **Kompatibilitas dengan CLI Docker:** Podman sangat kompatibel dengan perintah CLI Docker. 
+Pengguna yang sudah terbiasa dengan Docker dapat dengan mudah beralih ke Podman dengan sedikit penyesuaian.
+- **Manajemen Pod:** Mirip dengan Kubernetes, Podman memperkenalkan konsep pod, 
+yaitu kumpulan container yang berbagi namespace jaringan yang sama. Fitur ini mempermudah pengelolaan aplikasi multi-container.
+
+## Bagaimana Podman Bekerja
+Podman beroperasi tanpa daemon terpusat, artinya setiap container adalah proses terisolasi yang langsung dikelola oleh kernel. 
+Arsitektur ini berbeda dengan Docker, yang menggunakan daemon latar belakang (`dockerd`) untuk mengelola semua tugas container.
+
+Podman menggunakan format image container yang sama dengan Docker (OCI dan Docker Image Format), 
+sehingga menjamin kompatibilitas dengan image container yang sudah ada. Selain itu, 
+Podman dapat menghasilkan file YAML Kubernetes dari pod, memudahkan integrasi dengan lingkungan Kubernetes.
+
+## Contoh Penggunaan Podman
+Berikut adalah contoh sederhana menjalankan container Ubuntu menggunakan Podman:
+
+```bash
+podman run -it --rm ubuntu bash
